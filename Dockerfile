@@ -29,6 +29,10 @@ RUN sed -i 's!/var/www/html!/var/www/html/web!g' /etc/apache2/sites-available/00
 # Move the project to "web root"
 COPY . /var/www/html
 
+# Create cache dir and set permissions
+RUN mkdir /var/www/html/web/app/uploads/cache && \
+    chmod 755 /var/www/html/web/app/uploads/cache
+
 # RUN Composer install on bedrock
 RUN cd /var/www/html && composer install
 
