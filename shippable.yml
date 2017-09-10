@@ -10,7 +10,7 @@ build:
     - docker push 824574892225.dkr.ecr.eu-west-2.amazonaws.com/wordpress:latest
 
 integrations:
-  hub:
+  deploy:
     - integrationName: amazon_ecr
       region: eu-west-2              
       type: ecr
