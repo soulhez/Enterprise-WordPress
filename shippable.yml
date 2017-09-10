@@ -8,8 +8,7 @@ build:
   ci:
     - php -v
   post_ci:
-    - docker tag wordpress:latest 824574892225.dkr.ecr.eu-west-2.amazonaws.com/wordpress:latest
-    - docker push 824574892225.dkr.ecr.eu-west-2.amazonaws.com/wordpress:latest
+    - docker push 824574892225.dkr.ecr.eu-west-2.amazonaws.com/image-name:image-tag
 
 integrations:
   hub:
