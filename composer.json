@@ -1,5 +1,5 @@
 {
-  "name": "roots/bedrock",
+  "name": "ideea-ltd/wordpress",
   "type": "project",
   "license": "MIT",
   "description": "WordPress boilerplate with modern development tools, easier configuration, and an improved folder structure",
@@ -39,6 +39,7 @@
     "johnpbloch/wordpress": "4.8.1",
     "oscarotero/env": "^1.1.0",
     "roots/wp-password-bcrypt": "1.0.0",
+    "wp-cli/wp-cli": "*",
 
     "wpackagist-plugin/cmb2": "dev-trunk"
   },
