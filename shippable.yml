@@ -6,7 +6,11 @@ php:
 build:
   ci:
     - php -v
+  post_ci:
+    - docker push 824574892225.dkr.ecr.eu-west-2.amazonaws.com/wordpress:latest
 
-after_success:
-  - docker tag wordpress:latest 824574892225.dkr.ecr.eu-west-2.amazonaws.com/wordpress:latest
-  - docker push 824574892225.dkr.ecr.eu-west-2.amazonaws.com/wordpress:latest
+integrations:
+  hub:
+    - integrationName: amazon-ecr
+      region: eu-west-2              
+      type: ecr
