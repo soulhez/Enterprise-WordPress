@@ -8,7 +8,7 @@
          verbose="true">
     <testsuites>
         <testsuite name="Bedrock">
-            <directory>tests</directory>
+            <directory suffix="Test.php">./tests</directory>
         </testsuite>
     </testsuites>
     <filter>
