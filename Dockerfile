@@ -5,15 +5,20 @@ RUN apt-get update \
     && apt-get install -y \
         libpng12-dev \
         libjpeg-dev  \
-        sed \
         curl \
+        sed \
         zlib1g-dev \
-        nodejs \
-        npm \
     && docker-php-ext-install \
         zip \
-        mysqli \
-    && npm install -g yarnpkg
+        mysqli
+
+
+# Install NodeJS
+RUN curl -sL https://deb.nodesource.com/setup_6.x | /bin/bash && \
+    apt-get install -y nodejs
+
+# Install Yarn
+RUN npm install -g yarn
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -21,15 +26,17 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Update the default web root
 RUN sed -i 's!/var/www/html!/var/www/html/web!g' /etc/apache2/sites-available/000-default.conf
 
-
+# Move the project to "web root"
 COPY . /var/www/html
 
+# RUN Composer install on bedrock
 RUN cd /var/www/html && composer install
 
+# Set WORKDIR to location of theme
 WORKDIR /var/www/html/web/app/themes/example-theme
 
+# Install and compile theme files
 RUN composer install
+RUN npm install
+RUN yarn run build:production
 
-# RUN npm install
-
-# RUN yarn run build:production
