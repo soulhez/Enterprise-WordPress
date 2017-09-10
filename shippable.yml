@@ -11,6 +11,6 @@ build:
 
 integrations:
   hub:
-    - integrationName: amazon-ecr
+    - integrationName: amazon_ecr
       region: eu-west-2              
       type: ecr
