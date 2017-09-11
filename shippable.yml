@@ -3,15 +3,13 @@ language: php
 php:
   - "7.0"
 
-before_script:
-  - composer install
-
 build:
   ci:
     - ls
     - ls vendor/bin
+    - top
     - composer install
-    - /usr/local/bin/apache2-foreground
+    - php -S localhost -t .
     - ./vendor/bin/phpunit
   post_ci:
     - docker build -t 824574892225.dkr.ecr.eu-west-2.amazonaws.com/wordpress:$BRANCH.$BUILD_NUMBER .
