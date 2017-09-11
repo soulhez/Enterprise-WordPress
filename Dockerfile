@@ -12,7 +12,6 @@ RUN apt-get update \
         zip \
         mysqli
 
-
 # Install NodeJS
 RUN curl -sL https://deb.nodesource.com/setup_6.x | /bin/bash && \
     apt-get install -y nodejs

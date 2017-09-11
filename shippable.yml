@@ -5,7 +5,7 @@ php:
 
 before_script:
   - composer install
-  - cd /var/www/html/web/app/themes/example-theme && composer install
+  - cd web/app/themes/example-theme && composer install
 
 script:
     - ./vendor/bin/phpunit
