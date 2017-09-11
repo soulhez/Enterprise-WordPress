@@ -13,6 +13,9 @@ script:
     - phpunit --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage
 
 build:
+  ci:
+    - ls
+    - pwd -P
   post_ci:
     - docker build -t 824574892225.dkr.ecr.eu-west-2.amazonaws.com/wordpress:$BRANCH.$BUILD_NUMBER .
   push:
