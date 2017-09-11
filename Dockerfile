@@ -25,6 +25,9 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Update the default web root
 RUN sed -i 's!/var/www/html!/var/www/html/web!g' /etc/apache2/sites-available/000-default.conf
 
+# Create a mount point for our uploads volume
+VOLUME /var/www/html/web/app/uploads
+
 # Move the project to "web root"
 COPY . /var/www/html
 
