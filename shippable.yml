@@ -10,10 +10,9 @@ build:
   ci:
     - ls
     - ls vendor/bin
-    - pwd -P
-    - cat composer.json
+    - composer install
+    - apache2-foreground
     - ./vendor/bin/phpunit
-    - phpunit --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage
   post_ci:
     - docker build -t 824574892225.dkr.ecr.eu-west-2.amazonaws.com/wordpress:$BRANCH.$BUILD_NUMBER .
   push:
