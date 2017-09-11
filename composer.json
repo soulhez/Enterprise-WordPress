@@ -43,7 +43,6 @@
 
     "wpackagist-plugin/cmb2": "dev-trunk",
     "phpunit/phpunit": "^5.7",
-    "guzzlehttp/guzzle": "^6.3"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.0.2"

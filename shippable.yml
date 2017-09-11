@@ -6,9 +6,6 @@ php:
 build:
   ci:
     - composer install
-    - ls
-    - ls vendor/bin
-    - php -S localhost -t .
     - ./vendor/bin/phpunit
   post_ci:
     - docker build -t 824574892225.dkr.ecr.eu-west-2.amazonaws.com/wordpress:$BRANCH.$BUILD_NUMBER .
