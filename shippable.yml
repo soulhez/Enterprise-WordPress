@@ -5,10 +5,10 @@ php:
 
 build:
   ci:
-    - ls
-    - ls vendor/bin
     - top
     - composer install
+    - ls
+    - ls vendor/bin
     - php -S localhost -t .
     - ./vendor/bin/phpunit
   post_ci:
