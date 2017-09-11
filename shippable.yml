@@ -4,10 +4,18 @@ php:
   - "7.0"
 
 build:
+  pre_ci:
+    - cd /var/www/html && composer install
+    - cd /var/www/html/web/app/themes/example-theme && composer install
   post_ci:
     - docker build -t 824574892225.dkr.ecr.eu-west-2.amazonaws.com/wordpress:$BRANCH.$BUILD_NUMBER .
   push:
     - docker push 824574892225.dkr.ecr.eu-west-2.amazonaws.com/wordpress:$BRANCH.$BUILD_NUMBER
+
+
+notifications:
+  email: false   
+
 
 integrations:
   hub:
