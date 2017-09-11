@@ -5,7 +5,6 @@ php:
 
 before_script:
   - composer install
-  - cd web/app/themes/example-theme && composer install
 
 build:
   ci:
@@ -13,6 +12,7 @@ build:
     - ls vendor/bin
     - pwd -P
     - cat composer.json
+    - ./vendor/bin/phpunit
     - phpunit --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage
   post_ci:
     - docker build -t 824574892225.dkr.ecr.eu-west-2.amazonaws.com/wordpress:$BRANCH.$BUILD_NUMBER .
