@@ -30,17 +30,14 @@ RUN sed -i 's!/var/www/html!/var/www/html/web!g' /etc/apache2/sites-available/00
 COPY . /var/www/html
 
 # Create cache dir and set permissions
-RUN mkdir /var/www/html/web/app/uploads/cache && \
-    chmod 755 /var/www/html/web/app/uploads/cache
+RUN mkdir web/app/uploads/cache && \
+    chmod 755 web/app/uploads/cache
 
 # RUN Composer install on bedrock
-RUN cd /var/www/html && composer install
-
-# Set WORKDIR to location of theme
-WORKDIR /var/www/html/web/app/themes/example-theme
+RUN composer install
 
 # Install and compile theme files
-RUN composer install
-RUN npm install
-RUN yarn run build:production
-
+RUN cd web/app/themes/example-theme && \
+    composer install && \
+    npm install && \
+    yarn run build:production
