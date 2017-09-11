@@ -8,7 +8,9 @@ before_script:
   - cd web/app/themes/example-theme && composer install
 
 script:
-    - ./vendor/bin/phpunit
+    - pwd -P
+    - ls
+    - phpunit --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage
 
 build:
   post_ci:
